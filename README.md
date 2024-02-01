@@ -14,7 +14,8 @@ Pequeno algoritmo responsável por filtrar as ações atuais na bolsa de valores
 - Python 3.7+
 
 ## Utilização
-Clonar o projeto e executar o arquivo
+### Windows
+Clonar o projeto e executar o arquivo "windows.bat".
 
-### Windows > "EXECUTAR.bat"
-### Linux > "EXECUTAR.sh"
+### Linux
+Clonar o projeto, executar no terminal o comando ``` chmod +x linux.sh ``` e executar arquivo "linux.sh".
