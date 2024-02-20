@@ -4,23 +4,30 @@ from botcity.web.parsers import table_to_dict
 import pandas as pd
 import os
 import openpyxl
+import platform
+current_os = platform.system()
+
+if current_os == 'Windows':
+        os.system('cls')
+else:
+    os.system('clear')
 
 
 class Bot(WebBot):
     def action(self, execution=None):
-        excel_filepath = 'stocks-now.xlsx'
+        workbook_filepath = 'result.xlsx'
 
-        if os.path.exists(excel_filepath):
-            os.remove(excel_filepath)
+        if os.path.exists(workbook_filepath):
+            os.remove(workbook_filepath)
         
         wb = openpyxl.Workbook()
-        wb.save(excel_filepath)
+        wb.save(workbook_filepath)
 
         self.headless = True
         self.browser = Browser.FIREFOX
         self.driver_path = GeckoDriverManager().install()
 
-        print('Colecting data...')
+        print('Coletando dados...')
         self.browse('https://www.fundamentus.com.br/buscaavancada.php')
         self.maximize_window()
         self.find_element('buscar', By.CLASS_NAME).click()
@@ -51,9 +58,26 @@ class Bot(WebBot):
         # Sort by cotação
         df = df.sort_values(by='cotação', ascending=True)
 
-        df.to_excel(excel_filepath, index=False)
+        df.to_excel(workbook_filepath, index=False)
 
-        print('Process finished.')
+        df.columns = [col.upper() for col in df.columns]
+
+        if current_os == 'Windows':
+            os.system('cls')
+        else:
+            os.system('clear')
+        
+        print(' - - - - - - RESULTADO - - - - - - ')
+        print(df)
+        print(' - - - - - - - - - - - - - - - - - ')
+        print(' - - - - - - - - - - - - - - - - - ')
+        print('Foi gerado um arquivo "result.xlsx" com os dados coletados para caso deseje analisá-los em uma planilha.')
+        print(' - - - - - - - - - - - - - - - - - ')
+        print('ATENÇÃO: As ações retornadas não são garantias de bons investimentos!')
+        print(' - - - - - - - - - - - - - - - - - ')
+        print('Lembre-se sempre de estudar os ativos com atenção antes de investir o seu dinheiro.')
+        print(' - - - - - - - - - - - - - - - - - ')
+        x = input('Pressione a tecla "Enter" para sair')
 
 
     def filter_df(self, df, col, min, max, percent=False):
@@ -67,7 +91,6 @@ class Bot(WebBot):
         if percent:
             df.loc[:, col] = df[col].apply(lambda x: f'{x} %')
         return df
-
 
 if __name__ == '__main__':
     Bot.main()
