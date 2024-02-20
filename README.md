@@ -25,4 +25,4 @@ Clonar o projeto. Abrir o terminal na pasta clonada. Executar no terminal os com
 - ``` ./linux.sh ```
 
 ## Observação
-A primeira execução do programa pode ser um pouco mais demorada devido à instalação das depêndencias do código python.
+A primeira execução do programa pode ser um pouco mais demorada devido à instalação das dependências do código python.
