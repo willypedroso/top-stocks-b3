@@ -1,3 +1,5 @@
+<div align="center"><img src="top-stocks-b3-logo.png"></div>
+
 # Top Stocks B3
 
 ## Descrição
