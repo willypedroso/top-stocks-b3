@@ -18,4 +18,9 @@ Pequeno algoritmo responsável por filtrar as ações atuais na bolsa de valores
 Clonar o projeto e executar o arquivo "windows.bat".
 
 ### Linux
-Clonar o projeto, executar no terminal o comando ``` chmod +x linux.sh ``` e executar arquivo "linux.sh".
+Clonar o projeto. Abrir o terminal na pasta clonada. Executar no terminal os comandos:
+- ``` chmod +x linux.sh ```
+- ``` ./linux.sh ```
+
+## Observação
+A primeira execução do programa pode ser um pouco mais demorada devido à instalação das depêndencias do código python.
